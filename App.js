@@ -2,19 +2,19 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Home from '@views/Home';
+import { createStackNavigator } from 'react-navigation';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const Router = createStackNavigator({
+  Home
+}, {
+    initialRouteName: 'Home'
+  });
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Home />
+        <Router />
       </View>
     );
   }
@@ -22,7 +22,6 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: Platform.select({ ios: 20, android: 0 }),
+    flex: 1
   }
 });
