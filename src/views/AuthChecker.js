@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
+import Auth from '@services/Auth.service';
 
 class AuthChecker extends Component {
   static navigationOptions = {
@@ -18,12 +19,7 @@ class AuthChecker extends Component {
   }
 
   checkUserLogged() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // resolve({ username: 'fake' });
-        resolve(null);
-      }, 1000);
-    })
+    return Auth.checkLogged()
   }
 
   render() {
