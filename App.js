@@ -13,19 +13,8 @@ import Match from '@views/App/MatchDetails';
 
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
-const AuthRouter = createStackNavigator({
-  Intro,
-  LogIn,
-  SignUp,
-}, {
-    initialRouteName: 'Intro'
-  });
-const AppRouter = createStackNavigator({
-  Home,
-  Match
-}, {
-    initialRouteName: 'Home'
-  });
+const AuthRouter = createStackNavigator({ Intro, LogIn, SignUp, }, { initialRouteName: 'Intro' });
+const AppRouter = createStackNavigator({ Home, Match }, { initialRouteName: 'Home' });
 
 const SwitchRouter = createSwitchNavigator({ AuthRouter, AppRouter }, { initialRouteName: 'AuthRouter' });
 
