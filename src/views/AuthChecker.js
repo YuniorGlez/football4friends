@@ -6,6 +6,26 @@ class AuthChecker extends Component {
     header: null
   }
 
+  componentWillMount() {
+    this.checkUserLogged()
+      .then(user => {
+        if (!user) {
+          this.props.navigation.navigate('AuthRouter');
+        } else {
+          this.props.navigation.navigate('AppRouter');
+        }
+      })
+  }
+
+  checkUserLogged() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // resolve({ username: 'fake' });
+        resolve(null);
+      }, 1000);
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
