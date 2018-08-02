@@ -6,23 +6,30 @@ import LogIn from '@views/LogIn';
 import Intro from '@views/Intro';
 import Home from '@views/Home';
 import Match from '@views/MatchDetails';
-import { createStackNavigator } from 'react-navigation';
 
-const Router = createStackNavigator({
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
+
+const AuthRouter = createStackNavigator({
   Intro,
   LogIn,
   SignUp,
-  Home,
-  Match
 }, {
     initialRouteName: 'Intro'
   });
+const AppRouter = createStackNavigator({
+  Home,
+  Match
+}, {
+    initialRouteName: 'Home'
+  });
+
+const SwitchRouter = createSwitchNavigator({ AuthRouter, AppRouter }, { initialRouteName: 'AuthRouter' });
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Router />
+        <SwitchRouter />
       </View>
     );
   }
