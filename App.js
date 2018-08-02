@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 
+import AuthChecker from '@views/AuthChecker';
+
 // Intro Pages
 import SignUp from '@views/Intro/SignUp';
 import LogIn from '@views/Intro/LogIn';
@@ -16,7 +18,8 @@ import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 const AuthRouter = createStackNavigator({ Intro, LogIn, SignUp, }, { initialRouteName: 'Intro' });
 const AppRouter = createStackNavigator({ Home, Match }, { initialRouteName: 'Home' });
 
-const SwitchRouter = createSwitchNavigator({ AuthRouter, AppRouter }, { initialRouteName: 'AuthRouter' });
+const SwitchRouter = createSwitchNavigator({ AuthChecker, AuthRouter, AppRouter }, { initialRouteName: 'AuthChecker' });
+
 
 export default class App extends Component {
   render() {

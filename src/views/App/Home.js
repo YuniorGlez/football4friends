@@ -13,7 +13,6 @@ class Home extends Component {
   }
 
   goMatchInfoView() {
-
     this.props.navigation.push('Match');
 
   }
