@@ -1,11 +1,15 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
-import SignUp from '@views/SignUp';
-import LogIn from '@views/LogIn';
-import Intro from '@views/Intro';
-import Home from '@views/Home';
-import Match from '@views/MatchDetails';
+
+// Intro Pages
+import SignUp from '@views/Intro/SignUp';
+import LogIn from '@views/Intro/LogIn';
+import Intro from '@views/Intro/Intro';
+
+// App Pages
+import Home from '@views/App/Home';
+import Match from '@views/App/MatchDetails';
 
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
