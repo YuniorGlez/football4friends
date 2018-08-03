@@ -20,17 +20,26 @@ class SignUp extends Component {
   }
 
   signUp() {
-    Auth.createUser(this.state.user)
-      .then(newUser => {
-        this.props.navigation.navigate('AuthChecker');
-      })
-      .catch(err => alert(JSON.stringify(err)))
+    this.setState(() => ({
+      user: {
+        name: this.state.user.name,
+        alias: this.state.user.alias,
+        phone: cleanThisPhone(this.state.user.phone),
+      }
+    }), () => {
+      debugger;
+      Auth.createUser(this.state.user)
+        .then(newUser => {
+          this.props.navigation.navigate('AuthChecker');
+        })
+        .catch(err => alert(JSON.stringify(err)))
+    })
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <UserForm onChange={(user) => this.setState(user)} />
+        <UserForm onChange={(user) => this.setState({ user })} />
         <View style={styles.buttons}>
           <Button title="Enter" onPress={() => this.signUp()} />
         </View>
@@ -55,5 +64,10 @@ const styles = StyleSheet.create({
 
   }
 });
+
+
+function cleanThisPhone(phone) {
+  return phone.replace(/[+ -.()\[\]*]/g, "").substring(phone.replace(/[+ -.()\[\]*]/g, "").length - 9);
+}
 
 export default SignUp;

@@ -29,8 +29,6 @@ const fields = [
 class UserForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
 
   render() {
@@ -38,7 +36,7 @@ class UserForm extends Component {
       <GenerateForm
         ref={(c) => { this.form = c; }}
         fields={fields}
-        onValueChange={this.props.onChange}
+        onValueChange={() => this.props.onChange(this.form.getValues())}
       />
 
     );
